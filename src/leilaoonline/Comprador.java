@@ -23,8 +23,8 @@ public class Comprador {
     public String toString() {
         return "Comprador{" + "codigo=" + codigo + ", nome=" + nome + ", cpfcnpj=" + cpfcnpj + '}';
     }
-  
-     
+    
+
     /**
      * @return the codigo
      */
