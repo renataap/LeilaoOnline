@@ -19,7 +19,11 @@ public class Comprador {
      private double cpfcnpj;
      private String senha;
 
-       
+          @Override
+    public String toString() {
+        return "Comprador{" + "codigo=" + codigo + ", nome=" + nome + ", cpfcnpj=" + cpfcnpj + '}';
+    }
+  
      
     /**
      * @return the codigo
