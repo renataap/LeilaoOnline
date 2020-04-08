@@ -108,7 +108,10 @@ public class Comprador {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-     
-     
     
+    public void atualizaEndereco(String Endereco){
+        this.setEndereco(Endereco);
+    }
+     
+       
 }
