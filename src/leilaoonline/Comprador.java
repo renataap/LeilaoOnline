@@ -23,6 +23,33 @@ public class Comprador {
     public String toString() {
         return "Comprador{" + "codigo=" + codigo + ", nome=" + nome + ", cpfcnpj=" + cpfcnpj + '}';
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 23 * hash + (int) (Double.doubleToLongBits(this.cpfcnpj) ^ (Double.doubleToLongBits(this.cpfcnpj) >>> 32));
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Comprador other = (Comprador) obj;
+        if (Double.doubleToLongBits(this.cpfcnpj) != Double.doubleToLongBits(other.cpfcnpj)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
     
 
     /**
@@ -109,9 +136,7 @@ public class Comprador {
         this.senha = senha;
     }
     
-    public void atualizaEndereco(String Endereco){
-        this.setEndereco(Endereco);
-    }
+    
      
        
 }
