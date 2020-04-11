@@ -15,6 +15,10 @@ public class Vendedor {
     private String endereco;
     private double cpfcnpj;
     private String senha;
+    private Produtos produto;
+    private ContaBancaria contaBancaria;
+    private ContaBancaria Contabancaria;
+    
 
     @Override
     public int hashCode() {
@@ -99,6 +103,33 @@ public class Vendedor {
 
     public void setSenha(String senha) {
         this.senha = senha;
+               
     }
-
+    public Produtos getProduto() {
+        return produto;
+    }
+    
+    public ContaBancaria setContaBancaria(){
+        this.Contabancaria = contaBancaria;
+        return Contabancaria;
+    }
+    
+    public String verificaSenha (String senha){
+        if (senha ==null){
+            return "preencha o campo abaixo: ";
+        }
+        if (senha.length() < 6) {
+            return "Senha inválida";
+        }
+        if (!senha.equals(senha)) {
+            return "Senha não é compatível com a anterior";
+        }
+        return null;
+        
+    }
+    
+    public void Salvar (){
+        System.out.println("Vendedor salvo com sucesso");
+    }
+    
 }
