@@ -1,5 +1,8 @@
 package leilaoonline;
 
+import java.util.Objects;
+
+
 /**
  *
  * @author Daniel Alves
@@ -7,13 +10,44 @@ package leilaoonline;
 
 public class Vendedor {
     private int codigo;
-     private String nome;
-     private String login;
-     private String endereco;
-     private double cpfcnpj;
-     private String senha;
+    private String nome;
+    private String login;
+    private String endereco;
+    private double cpfcnpj;
+    private String senha;
 
-          @Override
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 19 * hash + (int) (Double.doubleToLongBits(this.cpfcnpj) ^ (Double.doubleToLongBits(this.cpfcnpj) >>> 32));
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Vendedor other = (Vendedor) obj;
+        if (this.codigo != other.codigo) {
+            return false;
+        }
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.login, other.login)) {
+            return false;
+        }
+        return true;
+    }
+
+        @Override
     public String toString() {
         return "Vendedor {" + "codigo=" + codigo + ", nome=" + nome + ", cpfcnpj=" + cpfcnpj + '}';
     }
@@ -66,8 +100,5 @@ public class Vendedor {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
-    public void atualizaEndereco(String Endereco){
-        this.setEndereco(Endereco);
-    }
+
 }
