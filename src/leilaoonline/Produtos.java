@@ -5,6 +5,8 @@
  */
 package leilaoonline;
 
+import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -41,6 +43,8 @@ public class Produtos {
     private int codigo;
     private String nome;
     private double valorInicial;
+    private Date dataExpiracao;
+    public List<Lance> lances;
     
     @Override
     public String toString() {
@@ -88,6 +92,30 @@ public class Produtos {
     public void setValorInicial(double valorInicial) {
         this.valorInicial = valorInicial;
     }
+
+    public Date getDataExpiracao() {
+        return dataExpiracao;
+    }
+
+    public void setDataExpiracao(Date dataExpiracao) {
+        this.dataExpiracao = dataExpiracao;
+    }
     
+    public void adicionaLance(Date data, String descricao, double valor, Comprador comprador) {
+        Lance lance = new Lance(codigo, descricao, valor, data, comprador, this);
+        if(lance.validarLance()) {
+            this.lances.add(lance);
+        }
+    }
+    
+    public Lance maiorLance() {
+        Lance maiorLance = null;
+        for (Lance lance : this.lances) {
+            if(maiorLance == null || lance.getValorLance() > maiorLance.getValorLance()) {
+                maiorLance = lance;
+            }
+        }
+        return maiorLance;
+    }
 
 }

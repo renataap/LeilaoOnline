@@ -5,6 +5,8 @@
  */
 package leilaoonline;
 
+import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -18,6 +20,7 @@ public class Comprador {
      private String endereco;
      private double cpfcnpj;
      private String senha;
+     public List<Lance> lances;
 
           @Override
     public String toString() {
@@ -136,7 +139,11 @@ public class Comprador {
         this.senha = senha;
     }
     
-    
-     
+    public void adicionaLance(Date data, String descricao, double valor, Produtos produto) {
+        Lance lance = new Lance(codigo, descricao, valor, data, this, produto);
+        if(lance.validarLance()) {
+            this.lances.add(lance);
+        }
+    }
        
 }
