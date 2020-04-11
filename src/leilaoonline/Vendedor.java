@@ -45,10 +45,7 @@ public class Vendedor {
         if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
-        if (!Objects.equals(this.login, other.login)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.login, other.login);
     }
 
         @Override
